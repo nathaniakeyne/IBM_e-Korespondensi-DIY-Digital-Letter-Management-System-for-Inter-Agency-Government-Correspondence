@@ -1,0 +1,172 @@
+/* =====================================================
+   e-Korespondensi DIY — Custom Styles
+   Tailwind CSS is the primary styling system.
+   This file only adds what Tailwind cannot handle.
+   ===================================================== */
+
+/* ------ Scrollbar Styling ------ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8A97E;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7E55;
+}
+
+/* ------ Page Transition ------ */
+.page {
+  animation: fadeSlideIn 0.25s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------ Card hover lift ------ */
+.card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(123, 28, 28, 0.10);
+}
+
+/* ------ Surat item card ------ */
+.surat-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.surat-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: #C8A97E;
+}
+
+/* ------ Active sidebar nav item ------ */
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ------ Status badge colors ------ */
+.badge-dikirim  { background-color: #DBEAFE; color: #1D4ED8; }
+.badge-diterima { background-color: #D1FAE5; color: #065F46; }
+.badge-diproses { background-color: #FEF3C7; color: #92400E; }
+.badge-selesai  { background-color: #F3E8FF; color: #6B21A8; }
+
+/* ------ Priority badge colors ------ */
+.badge-normal  { background-color: #F3F4F6; color: #4B5563; }
+.badge-penting { background-color: #FEF3C7; color: #92400E; }
+.badge-segera  { background-color: #FEE2E2; color: #991B1B; }
+
+/* ------ Timeline tracker ------ */
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 28px;
+  bottom: 0;
+  width: 2px;
+  background-color: #E5E7EB;
+}
+.timeline-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  z-index: 1;
+}
+.timeline-dot.active   { background-color: #7B1C1C; }
+.timeline-dot.done     { background-color: #C8A97E; }
+.timeline-dot.pending  { background-color: #D1D5DB; }
+
+/* ------ Toast animation ------ */
+#toast {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#toast.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+#toast.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* ------ Modal backdrop ------ */
+.modal-open {
+  display: flex !important;
+}
+
+/* ------ User role badge ------ */
+.role-admin_pusat    { background-color: #FEE2E2; color: #991B1B; }
+.role-admin_instansi { background-color: #DBEAFE; color: #1D4ED8; }
+.role-eksternal      { background-color: #F3F4F6; color: #4B5563; }
+
+/* ------ Rekomendasi tag ------ */
+.rekomendasi-tag {
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  user-select: none;
+}
+.rekomendasi-tag:hover {
+  background-color: #7B1C1C;
+  color: white;
+  border-color: #7B1C1C;
+}
+
+/* ------ Form input focus ring ------ */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(123, 28, 28, 0.15);
+}
+
+/* ------ Responsive sidebar overlay ------ */
+@media (max-width: 1023px) {
+  .sidebar-open #sidebar {
+    transform: translateX(0);
+  }
+}
+
+/* ------ Search highlight ------ */
+mark.search-hl {
+  background-color: #FEF3C7;
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ------ Print / export hint ------ */
+@media print {
+  #sidebar, header, #toast, #deleteModal, #userModal { display: none !important; }
+  main { margin: 0 !important; padding: 0 !important; }
+}
